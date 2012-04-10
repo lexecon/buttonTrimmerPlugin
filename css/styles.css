@@ -1,0 +1,29 @@
+html {
+    width:100%;
+    margin:0;
+    padding:0;
+}
+body {
+    width:100%;
+    margin:0;
+    padding:0;
+}
+#blockButton {
+    width:500px;
+    height:500px;
+    background:blue;
+}
+#blockButton img, label {
+    position:absolute;
+}
+#but {
+    position:absolute;
+    width:60px;
+    height:500px;
+    left:220px;
+    background:green;
+}
+#but button {
+    width:60px;
+    height:40px;
+}
