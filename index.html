@@ -5,18 +5,36 @@
 		<meta content="charset=UTF-8"/>
 		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 		<link rel="stylesheet" type="text/css" href="css/ui-css/jquery-ui.css"/>
+		<link rel="stylesheet" type="text/css" href="css/dimmerButton.css"/>
 		<script type="text/javascript" src="js/lib/jquery.js"></script>
 		<script type="text/javascript" src="js/lib/jquery-ui.js"></script>
-		<script type="text/javascript" src="js/lib/jquery-rotate.js"></script>
+		<script type="text/javascript" src="js/lib/jqueryRotate.js"></script>
+		<script type="text/javascript" src="js/lib/jquery.dimmerButton.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 	</head>
 	<body>
-		<div id ="blockButton">
-			<img src="img/Settings.png" alt="button" rotate="30" id="img"/>
-			<label id="output"></label>
 			<div id="but">
-				<button id="test"> test </button>
+				<input type="range"/>
+				<input type="checkbox"/>
+				<img src="img/dimmerDefault.png" usemap="#dimmer1">
+				<map name="dimmer1">
+				</map>
 			</div>
-		</div>
+			<!--<div id="but2">
+				<input type="range"/>
+				<input type="checkbox"/>
+				<img src="img/dimmer.png" usemap="#dimmer2">
+				<map name="dimmer2">
+				</map>
+				<img src="img/center.png" usemap="#center2">
+				<map name="center2">
+				</map>
+			</div>-->
+
+			<label id="out1"></label>
+			<label id="out2"></label>
+
+
+  			</div>
 	</body>
 </html>

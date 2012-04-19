@@ -1,0 +1,80 @@
+.jqueryDimmerButtonBlock {
+	position:relative;
+	overflow:hidden;
+}
+.jqueryDimmerButtonBlock input {
+	position:absolute;
+	display:none;
+}
+.jqueryDimmerButtonBlock img {
+	position:absolute;
+	opacity: 0;
+  	filter: alpha(opacity=0);
+  	-moz-opacity: 0;
+}
+.jqueryDimmerButtonBlock .buttonCenterAround{
+	position:absolute;
+}
+.jqueryDimmerButtonBlock .defaultCenterAround{
+	background: url("../img/centerAroundDefault.png");
+}
+.jqueryDimmerButtonBlock .hoverCenterAround{
+	background: url("../img/centerAroundHover.png");
+}
+.jqueryDimmerButtonBlock .buttonCenter{
+	position:absolute;
+	background: url("../img/center.png");
+}
+
+.jqueryDimmerButtonBlock .buttonCenterBackground{
+	position:absolute;
+}
+.jqueryDimmerButtonBlock .defaultBackground{
+	background:grey !important;
+}
+.jqueryDimmerButtonBlock .activeBackground{
+	background:rgb(85, 170, 170);
+}
+
+.no{
+	display:none;
+}
+.jqueryDimmerButtonBlock .buttonDimmer {
+	position:absolute;
+}
+.jqueryDimmerButtonBlock .defaultDimmer {
+	background: url("../img/dimmerDefault.png");
+}
+.jqueryDimmerButtonBlock .activeDimmer {
+	background: url("../img/dimmerActive.png") !important;
+}
+.jqueryDimmerButtonBlock .hoverDimmer {
+	background: url("../img/dimmerHover.png");
+}
+/*
+.jqueryDimmerButtonDimmer {
+	position:absolute;
+}
+.jqueryDimmerButtonBlock .defaultDimmer {
+	background: url("../img/trimmer.png");
+}
+.jqueryDimmerButtonBlock .activeDimmer {
+	background: url("../img/trimmerActive.png");
+}
+.jqueryTrimmerButtonCenter {
+	position:absolute;
+}
+.jqueryDimmerButtonCenter img {
+	opacity: 0;
+  	filter: alpha(opacity=0);
+  	-moz-opacity: 0;
+}
+.jqueryDimmerButtonBlock .defaultCenter {
+	background: url("../img/center.png");
+}
+.jqueryDimmerButtonBlock .activeCenter {
+	background: url("../img/centerActive.png");
+}
+.jqueryDimmerButtonBlock img {
+	position:absolute;
+}

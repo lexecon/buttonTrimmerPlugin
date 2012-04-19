@@ -1,26 +1,18 @@
 var center = {'x':257, 'y':257}
 
 $(document).ready(function(){
-	$('#test').mousedown(function(){
-		$("#blockButton").mousemove(function(e){
-			var rotate = getAngle(center,{"x":e.pageX, "y":e.pageY});
-			$('#but').rotate(rotate);
-			$('#img').rotate(rotate);
-		});
-		// треугольник АВС с гипотенузой АВ, А = center
-	$('#blockButton').one('mouseleave', function(){
-		$("#blockButton").unbind('mousemove');
-	});
-
-	$('#blockButton').one('mouseup', function(){
-		$("#blockButton").unbind('mousemove');
-		// треугольник АВС с гипотенузой АВ, А = center
-		
-		
-		//$('#output').html(e.pageX+':'+e.pageY+' ABC='+rotate);
-	});
-		
-		//$('#output').html(e.pageX+':'+e.pageY+' ABC='+rotate);
+	$('#but').trimmerButton({
+		lengthOfBlock: 250,
+		lengthOfCenter: 150,
+		lengthOfCenterAround: 170,
+		lengthOfDimmer: 220,
+		polyCoords:'110,0,  110,25,  140,30,  150,5',
+		clickButton: function(event){
+			$('#out1').html(''+event.value)
+		},
+	    changeRange: function(event){
+	    	$('#out2').html(event.value)
+	    }
 	});
 });
 
