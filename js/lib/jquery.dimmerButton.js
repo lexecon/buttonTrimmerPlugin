@@ -4,7 +4,7 @@
 			lengthOfBlock: 'def',
 			lengthOfDimmer: 'def',
 			lengthOfCenter: 'def',
-			lengthOfCenterAround: 'def',
+			radiusCenter: 'def',
 			polyCoords: '70,0,  80,20,  120,20,  130,0',
 			clickButton: function(event){},
 			clickRange: function(event){},
@@ -21,9 +21,9 @@
 			if (lengthOfCenter == 'def'){
 				lengthOfCenter = lengthOfDimmer/2;
 			}
-			var lengthOfCenterAround = options.lengthOfCenterAround;
-			if (lengthOfCenterAround == 'def'){
-				lengthOfCenterAround = lengthOfDimmer/2;
+			var radiusCenter = options.radiusCenter;
+			if (radiusCenter == 'def'){
+				radiusCenter = lengthOfCenter/2;
 			}
 			var lengthOfBlock = options.lengthOfBlock;
 			if (lengthOfBlock == 'def'){
@@ -32,8 +32,7 @@
 			var main = this;
 			var paddingDimmer = (lengthOfBlock-lengthOfDimmer)/2;
 			var paddingCenter = (lengthOfBlock-lengthOfCenter)/2;
-			var paddingCenterAround = (lengthOfBlock-lengthOfCenterAround)/2;
-			var radiusCenter = lengthOfCenter/2;
+			//var paddingCenterAround = (lengthOfBlock-lengthOfCenterAround)/2;
 			var radiusDimmer = lengthOfDimmer/2;
 			var leftTop = $(this).offset();
 			var centerCoord = {'x':leftTop.left+lengthOfBlock/2, 'y':leftTop.top + lengthOfBlock/2}
@@ -43,14 +42,13 @@
 			dimmerMap.append('<area />').children('area').eq(1).attr('shape','circle').attr('coords',radiusDimmer+','+radiusDimmer+','+radiusCenter);
 			// Main block ***************************************************
 			$(this).css('width',lengthOfBlock).css('height', lengthOfBlock)
-			.addClass('jqueryDimmerButtonBlock')
+			.addClass('jqueryDimmerButtonBlock').addClass('dimmerBlockDefault')
+			.prepend('<div class="buttonCenter defaultCenter"></div>')
 			.prepend('<div class="buttonDimmer defaultDimmer"></div>')
-			.prepend('<div class="buttonCenterAround defaultCenterAround"></div>')
-			.prepend('<div class="buttonCenter"></div>')
-			.prepend('<div class="buttonCenterBackground defaultBackground"></div>')
+			
 			// Background **************************************************
-			$(this).children('.buttonCenterBackground').css('height', lengthOfCenter)
-			.css('width', lengthOfCenter).css('top', paddingCenter).css('left', paddingCenter)
+			/*$(this).children('.buttonCenterBackground').css('height', lengthOfCenter)
+			.css('width', lengthOfCenter).css('top', paddingCenter).css('left', paddingCenter)*/
 			// Dimmer ******************************************************
 			$(this).children('.buttonDimmer').css('height', lengthOfDimmer)
 			.css('width', lengthOfDimmer).css('top', paddingDimmer).css('left', paddingDimmer)
@@ -58,8 +56,8 @@
 			$(this).children('.buttonCenter').css('height', lengthOfCenter)
 			.css('width', lengthOfCenter).css('top', paddingCenter).css('left', paddingCenter)
 			// CenterAround *******************************************************
-			$(this).children('.buttonCenterAround').css('height', lengthOfCenterAround)
-			.css('width', lengthOfCenterAround).css('top', paddingCenterAround).css('left', paddingCenterAround)
+			/*$(this).children('.buttonCenterAround').css('height', lengthOfCenterAround)
+			.css('width', lengthOfCenterAround).css('top', paddingCenterAround).css('left', paddingCenterAround)*/
 
 			//Определяем, что будет кнопкой center
 			var center = dimmerMap.children('area').eq(1);
@@ -74,8 +72,8 @@
 			var dimmer = dimmerMap.children('area').eq(0);
 			dimmer.hover(function(){hoverDimmer(main)}, function(){noHoverDimmer(main)})
 			.mousedown(function(ev){
-				if(!$(main).children('.buttonCenterBackground').hasClass('defaultBackground')){
-					$(main).children('.buttonDimmer').addClass('activeDimmer');
+				if($(main).children('.buttonCenter').hasClass('activeCenter')){
+					//$(main).children('.buttonDimmer').addClass('activeDimmer');
 					$(main).mousemove(function(e){
 						var rotate = getAngle(centerCoord,{"x":e.pageX, "y":e.pageY},$(main).children('input[type="range"]').val());
 						var old = parseInt($(main).children('input[type="range"]').val());
@@ -92,7 +90,7 @@
 							rotate=1;
 						}
 						var opacity = parseInt(rotate/(3.6))/1.5+33;
-						$(main).children('.buttonCenterBackground').css('background','hsl(180, '+opacity+'%, 50%)');
+						//$(main).children('.buttonCenterBackground').css('background','hsl(180, '+opacity+'%, 50%)');
 						$(main).children('input[type="range"]').val(rotate).change();
 						$(main).children('.buttonDimmer').rotate(rotate);
 						dimmerImg.rotate(rotate);
@@ -124,33 +122,35 @@
 		}); 
         function moveOf(main){
         	$(main).unbind('mousemove');
-        	$(main).children('.buttonDimmer').removeClass('activeDimmer');
+        	//$(main).children('.buttonDimmer').removeClass('activeDimmer');
         }
 		function hoverDimmer (element){
-			if(!$(element).children('.buttonCenterBackground').hasClass('defaultBackground')){
+			/*if(!$(element).children('.buttonCenterBackground').hasClass('defaultBackground')){
 				$(element).children('.buttonDimmer').removeClass('defaultDimmer').addClass('hoverDimmer')
-			}
+			}*/
 		}
 		function noHoverDimmer (element){
-			if(!$(element).children('.buttonCenterBackground').hasClass('defaultBackground')){
-				$(element).children('.buttonDimmer').removeClass('hoverDimmer').addClass('defaultDimmer')
-			}
+			/*if(!$(element).children('.buttonCenterBackground').hasClass('defaultBackground')){
+				$(element).children('.buttonDimmer').removeClass('hoverCenter').addClass('defaultCenter')
+			}*/
 		}
 		function hoverCenter(element){
-			if(!$(element).children('.buttonDimmer').hasClass('activeDimmer')){
-				$(element).children('.buttonCenterAround').removeClass('defaultCenterAround').addClass('hoverCenterAround')
+			if(!$(element).children('.buttonCenter').hasClass('activeCenter')){
+				$(element).children('.buttonCenter').removeClass('defaultCenter').addClass('hoverCenter')
 			}
 		}
 		function noHoverCenter(element){
-			if(!$(element).children('.buttonDimmer').hasClass('activeDimmer')){
-				$(element).children('.buttonCenterAround').removeClass('hoverCenterAround').addClass('defaultCenterAround')
+			if(!$(element).children('.buttonCenter').hasClass('activeCenter')){
+				$(element).children('.buttonCenter').removeClass('hoverCenter').addClass('defaultCenter')
 			}
 		}
 		function clickButtonAction(element, event){
 			if (event.value){
-				$(element).children('.buttonCenterBackground').removeClass('defaultBackground').addClass('activeBackground')
+				$(element).children('.buttonCenter').removeClass('hoverCenter').addClass('activeCenter')
+				$(element).removeClass('dimmerBlockDefault').addClass('dimmerBlockActive')
 			}else {
-				$(element).children('.buttonCenterBackground').removeClass('activeBackground').addClass('defaultBackground')
+				$(element).children('.buttonCenter').removeClass('activeCenter').addClass('hoverCenter')
+				$(element).removeClass('dimmerBlockActive').addClass('dimmerBlockDefault')
 			}
 		}
 		function tougleCenter(element) {

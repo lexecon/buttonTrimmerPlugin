@@ -1,6 +1,13 @@
 .jqueryDimmerButtonBlock {
 	position:relative;
 	overflow:hidden;
+	background-size:cover;
+}
+.dimmerBlockDefault {
+	background: url("../img/fonOf.png");
+}
+.dimmerBlockActive {
+	background: url("../img/fonOn.png");
 }
 .jqueryDimmerButtonBlock input {
 	position:absolute;
@@ -12,28 +19,18 @@
   	filter: alpha(opacity=0);
   	-moz-opacity: 0;
 }
-.jqueryDimmerButtonBlock .buttonCenterAround{
-	position:absolute;
-}
-.jqueryDimmerButtonBlock .defaultCenterAround{
-	background: url("../img/centerAroundDefault.png");
-}
-.jqueryDimmerButtonBlock .hoverCenterAround{
-	background: url("../img/centerAroundHover.png");
-}
 .jqueryDimmerButtonBlock .buttonCenter{
 	position:absolute;
-	background: url("../img/center.png");
+	background-size:cover;
 }
-
-.jqueryDimmerButtonBlock .buttonCenterBackground{
-	position:absolute;
+.jqueryDimmerButtonBlock .defaultCenter{
+	background: url("../img/buttonDefault.png");
 }
-.jqueryDimmerButtonBlock .defaultBackground{
-	background:grey !important;
+.jqueryDimmerButtonBlock .activeCenter{
+	background: url("../img/buttonActive.png");
 }
-.jqueryDimmerButtonBlock .activeBackground{
-	background:rgb(85, 170, 170);
+.jqueryDimmerButtonBlock .hoverCenter {
+	background: url("../img/buttonHover.png");
 }
 
 .no{
@@ -41,15 +38,13 @@
 }
 .jqueryDimmerButtonBlock .buttonDimmer {
 	position:absolute;
+	background-size:cover;
 }
 .jqueryDimmerButtonBlock .defaultDimmer {
-	background: url("../img/dimmerDefault.png");
+	background: url("../img/dimmerOn.png");
 }
 .jqueryDimmerButtonBlock .activeDimmer {
-	background: url("../img/dimmerActive.png") !important;
-}
-.jqueryDimmerButtonBlock .hoverDimmer {
-	background: url("../img/dimmerHover.png");
+	background: url("../img/dimmerOn.png");
 }
 /*
 .jqueryDimmerButtonDimmer {

@@ -2,11 +2,11 @@ var center = {'x':257, 'y':257}
 
 $(document).ready(function(){
 	$('#but').trimmerButton({
-		lengthOfBlock: 250,
-		lengthOfCenter: 150,
-		lengthOfCenterAround: 170,
-		lengthOfDimmer: 220,
-		polyCoords:'110,0,  110,25,  140,30,  150,5',
+		lengthOfBlock: 400,
+		lengthOfCenter: 270,
+		lengthOfDimmer: 400,
+		radiusCenter:110,
+		polyCoords:'170,0,  110,50,  230,50,  230,5',
 		clickButton: function(event){
 			$('#out1').html(''+event.value)
 		},
